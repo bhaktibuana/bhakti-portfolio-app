@@ -1,0 +1,16 @@
+export const en = {
+	about: 'About',
+	skills: 'Skills',
+	expreiences: 'Expreiences',
+	projects: 'Projects',
+	blogs: 'Blogs',
+	contact: 'Contact',
+	settings: 'Settings',
+	theme: 'Theme',
+	system_default: 'System Default',
+	light: 'Light',
+	dark: 'Dark',
+	language: 'Language',
+	english: 'English',
+	indonesia: 'Indonesia',
+};
