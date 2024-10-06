@@ -118,8 +118,13 @@ const handleBlurCopyMail = () => {
 	width: 100%;
 	height: auto;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	align-items: center;
 	padding: 14px 20px;
+
+	@include breakpoint(lg, min) {
+		flex-direction: row;
+	}
 }
 
 ._home-about-content {
@@ -127,6 +132,21 @@ const handleBlurCopyMail = () => {
 	height: auto;
 	display: flex;
 	flex-direction: column;
+	margin-top: 14px;
+
+	@include breakpoint(sm, min) {
+		width: 85%;
+	}
+
+	@include breakpoint(lg, min) {
+		padding: 0 0 0 24px;
+		margin-top: 0;
+		width: 100%;
+	}
+
+	@include breakpoint(xl, min) {
+		padding: 0;
+	}
 
 	& > span.title {
 		color: var(--color-text-001);
@@ -152,6 +172,10 @@ const handleBlurCopyMail = () => {
 		font-weight: 400;
 		line-height: 24px;
 		margin: 12px 0;
+
+		@include breakpoint(lg, min) {
+			max-width: 650px;
+		}
 	}
 
 	& > .contact-wrapper {

@@ -21,12 +21,24 @@ import PixelverseNFT from '@/assets/pixelverse-nft.jpg';
 
 <style scoped lang="scss">
 ._avatar-wrapper {
-	width: 70%;
-	height: auto;
+	width: 50%;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 100%;
+
+	@include breakpoint(md, min) {
+		width: 50%;
+	}
+
+	@include breakpoint(lg, min) {
+		margin-top: 20px;
+	}
+
+	@include breakpoint(xl, min) {
+		width: 70%;
+	}
 }
 
 ._avatar-card {
