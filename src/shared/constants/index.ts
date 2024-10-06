@@ -1,3 +1,5 @@
+import { T_IconName } from '@/shared/types';
+
 export const APP_NAME = 'bhaktibuana';
 
 export const APP_THEME = [
@@ -26,31 +28,31 @@ export const PUBLIC_NAV_MENU = [
 	{
 		id: 'about',
 		label: '',
-		icon: 'ghost-filled',
+		icon: 'ghost-filled' as T_IconName,
 	},
 	{
 		id: 'skills',
 		label: '',
-		icon: 'ghost-filled',
+		icon: 'code-circle-2-filled' as T_IconName,
 	},
 	{
-		id: 'expreiences',
+		id: 'experiences',
 		label: '',
-		icon: 'ghost-filled',
+		icon: 'apps-filled' as T_IconName,
 	},
 	{
 		id: 'projects',
 		label: '',
-		icon: 'ghost-filled',
+		icon: 'stack-2-filled' as T_IconName,
 	},
 	{
 		id: 'blogs',
 		label: '',
-		icon: 'ghost-filled',
+		icon: 'article-filled' as T_IconName,
 	},
 	{
 		id: 'contact',
 		label: '',
-		icon: 'ghost-filled',
+		icon: 'mail-filled' as T_IconName,
 	},
 ];

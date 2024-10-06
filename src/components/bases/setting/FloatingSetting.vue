@@ -1,5 +1,9 @@
 <template>
-	<div class="_floating-setting-container" :class="{ expanded: isExpanded }">
+	<div
+		class="_floating-setting-container"
+		:class="{ expanded: isExpanded }"
+		ref="containerElement"
+	>
 		<div class="_floating-setting-wrapper">
 			<div class="_floating-setting-header">
 				<div class="icon-wrapper" @click="isExpanded = false">
@@ -50,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import Icon from '@/shared/libs/icon/Icon.vue';
@@ -65,6 +69,10 @@ const appTheme = useAppTheme();
 const appLanguage = useAppLanguage();
 
 const isExpanded = ref(false);
+const selectedTheme = ref(appTheme.theme);
+const selectedLang = ref(appLanguage.language);
+const containerElement = ref<HTMLDivElement | null>(null);
+
 const themeOptions = computed(() => {
 	const defaultOptions = [
 		{
@@ -86,8 +94,15 @@ const langOptions = computed(() =>
 		label: t(item.value),
 	})),
 );
-const selectedTheme = ref(appTheme.theme);
-const selectedLang = ref(appLanguage.language);
+
+const handleClickOutside = (event: MouseEvent) => {
+	if (
+		containerElement.value &&
+		!containerElement.value.contains(event.target as Node)
+	) {
+		isExpanded.value = false;
+	}
+};
 
 watch(selectedTheme, (newValue) => {
 	appTheme.setAppTheme(newValue);
@@ -96,6 +111,14 @@ watch(selectedTheme, (newValue) => {
 watch(selectedLang, (newValue) => {
 	appLanguage.setAppLanguage(newValue);
 	location.reload();
+});
+
+onMounted(() => {
+	document.addEventListener('click', handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+	document.removeEventListener('click', handleClickOutside);
 });
 </script>
 

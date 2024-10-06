@@ -13,16 +13,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import LeftContent from '@/components/layouts/navigation/top-navigation/LeftContent.vue';
 import RightContent from '@/components/layouts/navigation/top-navigation/RightContent.vue';
-import { useAppTheme, usePublicSectionScroll } from '@/store';
+import { useAppTheme, usePublicSectionScroll, usePublicNav } from '@/store';
 import { themeParser } from '@/shared/helpers';
 import { theme } from '@/assets/styles/theme';
 import { PUBLIC_NAV_MENU } from '@/shared/constants';
 
 const appTheme = useAppTheme();
 const publicSectionScroll = usePublicSectionScroll();
+const publicNav = usePublicNav();
 
 const thresholdScroll = 200;
 
@@ -31,19 +32,23 @@ const shadow = ref<string>('none');
 const filter = ref<string>('none');
 
 const handleScroll = () => {
-	const scrollTop = window.scrollY;
-	const opacity = Math.min(scrollTop / thresholdScroll, 0.8);
-	backgroundColor.value =
-		themeParser(appTheme.theme) === 'dark'
-			? `rgba(52, 54, 84, ${opacity})`
-			: `rgba(248, 248, 248, ${opacity})`;
-
-	if (scrollTop > 0) {
-		shadow.value = theme().color_shadow_001;
-		filter.value = 'blur(5px)';
+	if (publicNav.active) {
+		handleSidenavActive();
 	} else {
-		shadow.value = 'none';
-		filter.value = 'none';
+		const scrollTop = window.scrollY;
+		const opacity = Math.min(scrollTop / thresholdScroll, 0.8);
+		backgroundColor.value =
+			themeParser(appTheme.theme) === 'dark'
+				? `rgba(52, 54, 84, ${opacity})`
+				: `rgba(248, 248, 248, ${opacity})`;
+
+		if (scrollTop > 0) {
+			shadow.value = theme().color_shadow_001;
+			filter.value = 'blur(5px)';
+		} else {
+			shadow.value = 'none';
+			filter.value = 'none';
+		}
 	}
 
 	const sections = PUBLIC_NAV_MENU.map((item) => item.id);
@@ -64,6 +69,34 @@ const handleScroll = () => {
 		}
 	}
 };
+
+const handleSidenavActive = () => {
+	backgroundColor.value = theme().color_background_002;
+	shadow.value = theme().color_shadow_001;
+	filter.value = 'blur(5px)';
+};
+
+watch(
+	() => publicNav.active,
+	(newValue) => {
+		if (newValue) {
+			handleSidenavActive();
+		} else {
+			handleScroll();
+		}
+	},
+);
+
+watch(
+	() => appTheme.theme,
+	() => {
+		if (publicNav.active) {
+			handleSidenavActive();
+		} else {
+			handleScroll();
+		}
+	},
+);
 
 onMounted(() => {
 	handleScroll();

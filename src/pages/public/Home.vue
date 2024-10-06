@@ -3,6 +3,7 @@
 		<base-floating-setting />
 		<home-about />
 		<home-skills />
+		<home-experiences />
 	</div>
 </template>
 
@@ -12,6 +13,7 @@ import { watch } from 'vue';
 import BaseFloatingSetting from '@/components/bases/setting/FloatingSetting.vue';
 import HomeAbout from '@/components/pages/public/home/About.vue';
 import HomeSkills from '@/components/pages/public/home/Skills.vue';
+import HomeExperiences from '@/components/pages/public/home/Experiences.vue';
 import { usePublicSectionScroll } from '@/store';
 
 const publicSectionScroll = usePublicSectionScroll();

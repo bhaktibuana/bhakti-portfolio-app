@@ -34,7 +34,9 @@
 							</a>
 						</div>
 
-						<base-divider orientation="vertical" />
+						<div v-if="screenSize.width >= 576">
+							<base-divider orientation="vertical" />
+						</div>
 
 						<div class="contact-item-wrapper">
 							<div class="icon-wrapper">
@@ -53,7 +55,9 @@
 							</a>
 						</div>
 
-						<base-divider orientation="vertical" />
+						<div v-if="screenSize.width >= 576">
+							<base-divider orientation="vertical" />
+						</div>
 
 						<div class="contact-item-wrapper">
 							<div class="icon-wrapper">
@@ -80,7 +84,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { inject, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import LayoutSectionContainer from '@/components/layouts/public/home/SectionContainer.vue';
@@ -89,8 +93,11 @@ import Avatar from '@/components/pages/public/home/Avatar.vue';
 import Icon from '@/shared/libs/icon/Icon.vue';
 import BaseDivider from '@/components/bases/divider/Divider.vue';
 import BaseTooltip from '@/components/bases/tooltip/Tooltip.vue';
+import { I_ScreenSize } from '@/shared/interfaces';
 
 const { t } = useI18n();
+
+const screenSize = inject<I_ScreenSize>('screenSize', {} as I_ScreenSize);
 
 const mailCopyTitle = ref(t('copy'));
 
@@ -182,6 +189,11 @@ const handleBlurCopyMail = () => {
 		display: flex;
 		flex-direction: row;
 		gap: 8px;
+
+		@include breakpoint(sm, max) {
+			flex-direction: column;
+			gap: 4px;
+		}
 
 		& > .contact-item-wrapper {
 			display: flex;
