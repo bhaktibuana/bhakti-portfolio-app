@@ -16,11 +16,13 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import LeftContent from '@/components/layouts/navigation/top-navigation/LeftContent.vue';
 import RightContent from '@/components/layouts/navigation/top-navigation/RightContent.vue';
-import { useAppTheme } from '@/store';
+import { useAppTheme, usePublicSectionScroll } from '@/store';
 import { themeParser } from '@/shared/helpers';
 import { theme } from '@/assets/styles/theme';
+import { PUBLIC_NAV_MENU } from '@/shared/constants';
 
 const appTheme = useAppTheme();
+const publicSectionScroll = usePublicSectionScroll();
 
 const thresholdScroll = 200;
 
@@ -42,6 +44,24 @@ const handleScroll = () => {
 	} else {
 		shadow.value = 'none';
 		filter.value = 'none';
+	}
+
+	const sections = PUBLIC_NAV_MENU.map((item) => item.id);
+	for (const sectionId of sections) {
+		const section = document.getElementById(sectionId);
+		if (section) {
+			const rect = section.getBoundingClientRect();
+			if (rect.top <= 0 && rect.bottom > 0) {
+				publicSectionScroll.setTargetSectionId('');
+				if (rect.bottom <= 1) {
+					publicSectionScroll.setActiveSection(
+						sections[sections.indexOf(sectionId) + 1],
+					);
+				} else {
+					publicSectionScroll.setActiveSection(sectionId);
+				}
+			}
+		}
 	}
 };
 

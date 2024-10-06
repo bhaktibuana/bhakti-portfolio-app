@@ -110,6 +110,7 @@ watch(selectedLang, (newValue) => {
 	flex-direction: row-reverse;
 	color: var(--color-text-001);
 	transition: 0.3s all ease;
+	z-index: 10;
 
 	&.expanded {
 		right: 0;

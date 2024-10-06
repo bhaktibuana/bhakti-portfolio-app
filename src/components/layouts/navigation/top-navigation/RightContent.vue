@@ -1,43 +1,37 @@
 <template>
 	<div class="_topnav-right-content">
-		<base-top-nav-button v-for="menu in menus" :label="menu.label" />
+		<base-top-nav-button
+			v-for="menu in menus"
+			:key="menu.id"
+			:id="menu.id"
+			:label="menu.label"
+			@click="handleScrollToSectionId(menu.id)"
+		/>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import BaseTopNavButton from '@/components/bases/button/TopNavButton.vue';
+import { PUBLIC_NAV_MENU } from '@/shared/constants';
+import { usePublicSectionScroll } from '@/store';
 
 const { t } = useI18n();
+const publicSectionScroll = usePublicSectionScroll();
 
-const menus = ref([
-	{
-		key: 'about',
-		label: t('about'),
-	},
-	{
-		key: 'skills',
-		label: t('skills'),
-	},
-	{
-		key: 'expreiences',
-		label: t('expreiences'),
-	},
-	{
-		key: 'projects',
-		label: t('projects'),
-	},
-	{
-		key: 'blogs',
-		label: t('blogs'),
-	},
-	{
-		key: 'contact',
-		label: t('contact'),
-	},
-]);
+const menus = computed(() =>
+	PUBLIC_NAV_MENU.map((item) => ({
+		id: item.id,
+		label: t(item.id),
+		icon: item.icon,
+	})),
+);
+
+const handleScrollToSectionId = (sectionId: string) => {
+	publicSectionScroll.setTargetSectionId(sectionId);
+};
 </script>
 
 <style scoped lang="scss">
@@ -48,6 +42,6 @@ const menus = ref([
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
-	gap: 12px;
+	gap: 2px;
 }
 </style>

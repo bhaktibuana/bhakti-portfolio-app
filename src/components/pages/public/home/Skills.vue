@@ -1,5 +1,5 @@
 <template>
-	<layout-section-container :background-color="backgroundColor">
+	<layout-section-container id="skills" :background-color="backgroundColor">
 		<div class="_home-skills-container">
 			<layout-section-header
 				:title="$t('skills_abilities')"
@@ -26,7 +26,7 @@ const backgroundColor = ref(theme().color_background_003);
 watch(
 	() => appTheme.theme,
 	() => {
-        console.log(theme().color_background_003)
+		console.log(theme().color_background_003);
 		backgroundColor.value = theme().color_background_003;
 	},
 );

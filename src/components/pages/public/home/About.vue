@@ -1,5 +1,5 @@
 <template>
-	<layout-section-container>
+	<layout-section-container id="about">
 		<div class="_home-about-container">
 			<layout-section-header
 				:title="$t('about_me')"
