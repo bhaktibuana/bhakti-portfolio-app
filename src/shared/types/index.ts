@@ -17,8 +17,26 @@ export type T_ScreenType = 'desktop' | 'mobile';
 export type T_AppTheme = 'light' | 'dark';
 
 export type T_IconName =
-	| 'wallet'
 	| 'loader-2'
 	| 'settings-2'
 	| 'circle-chevron-right'
-	| 'chevron-down';
+	| 'chevron-down'
+	| 'ghost-filled'
+	| 'brand-linkedin'
+	| 'brand-github'
+	| 'mail'
+	| 'code-circle-2-filled';
+
+export type T_TooltipPlacement =
+	| 'topLeft'
+	| 'top'
+	| 'topRight'
+	| 'leftTop'
+	| 'left'
+	| 'leftBottom'
+	| 'rightTop'
+	| 'right'
+	| 'rightBottom'
+	| 'bottomLeft'
+	| 'bottom'
+	| 'bottomRight';

@@ -122,7 +122,7 @@ watch(selectedLang, (newValue) => {
 	margin-top: 20px;
 	border-radius: 10px 0 0 10px;
 	background-color: var(--color-background-002);
-	box-shadow: 0px 1px 4px rgba(146, 161, 176, 0.4);
+	box-shadow: var(--color-shadow-001);
 	backdrop-filter: blur(5px);
 	display: flex;
 	justify-content: center;
@@ -139,7 +139,7 @@ watch(selectedLang, (newValue) => {
 	height: 100%;
 	border-radius: 10px 0 0 10px;
 	background-color: var(--color-background-002);
-	box-shadow: 0px 1px 4px rgba(146, 161, 176, 0.4);
+	box-shadow: var(--color-shadow-001);
 	backdrop-filter: blur(5px);
 	display: flex;
 	flex-direction: column;

@@ -1,7 +1,6 @@
 <template>
-	<icon-wallet v-if="name === 'wallet'" :size="size" :stroke-width="stroke" />
 	<icon-loader-2
-		v-else-if="name === 'loader-2'"
+		v-if="name === 'loader-2'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
@@ -20,17 +19,46 @@
 		:size="size"
 		:stroke-width="stroke"
 	/>
+	<icon-ghost-filled
+		v-else-if="name === 'ghost-filled'"
+		:size="size"
+		:stroke-width="stroke"
+	/>
+	<icon-brand-linkedin
+		v-else-if="name === 'brand-linkedin'"
+		:size="size"
+		:stroke-width="stroke"
+	/>
+	<icon-brand-github
+		v-else-if="name === 'brand-github'"
+		:size="size"
+		:stroke-width="stroke"
+	/>
+	<icon-mail
+		v-else-if="name === 'mail'"
+		:size="size"
+		:stroke-width="stroke"
+	/>
+	<icon-code-circle-2-filled
+		v-else-if="name === 'code-circle-2-filled'"
+		:size="size"
+		:stroke-width="stroke"
+	/>
 </template>
 
 <script setup lang="ts">
 import { PropType } from 'vue';
 
 import {
-	IconWallet,
 	IconLoader2,
 	IconSettings2,
 	IconCircleChevronRight,
-	IconChevronDown
+	IconChevronDown,
+	IconGhostFilled,
+	IconBrandLinkedin,
+	IconBrandGithub,
+	IconMail,
+	IconCodeCircle2Filled,
 } from '@tabler/icons-vue';
 
 import { T_IconName } from '@/shared/types';

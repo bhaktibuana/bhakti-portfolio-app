@@ -1,11 +1,15 @@
 <template>
 	<div class="home-container">
 		<base-floating-setting />
+		<home-about />
+		<home-skills />
 	</div>
 </template>
 
 <script setup lang="ts">
 import BaseFloatingSetting from '@/components/bases/setting/FloatingSetting.vue';
+import HomeAbout from '@/components/pages/public/home/About.vue';
+import HomeSkills from '@/components/pages/public/home/Skills.vue';
 </script>
 
 <style scoped lang="scss">

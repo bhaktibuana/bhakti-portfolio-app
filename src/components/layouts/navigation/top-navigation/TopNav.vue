@@ -16,6 +16,11 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import LeftContent from '@/components/layouts/navigation/top-navigation/LeftContent.vue';
 import RightContent from '@/components/layouts/navigation/top-navigation/RightContent.vue';
+import { useAppTheme } from '@/store';
+import { themeParser } from '@/shared/helpers';
+import { theme } from '@/assets/styles/theme';
+
+const appTheme = useAppTheme();
 
 const thresholdScroll = 200;
 
@@ -26,10 +31,13 @@ const filter = ref<string>('none');
 const handleScroll = () => {
 	const scrollTop = window.scrollY;
 	const opacity = Math.min(scrollTop / thresholdScroll, 0.8);
-	backgroundColor.value = `rgba(255, 255, 255, ${opacity})`;
+	backgroundColor.value =
+		themeParser(appTheme.theme) === 'dark'
+			? `rgba(52, 54, 84, ${opacity})`
+			: `rgba(248, 248, 248, ${opacity})`;
 
 	if (scrollTop > 0) {
-		shadow.value = 'rgba(146, 161, 176, 0.3) 0px 1px 4px';
+		shadow.value = theme().color_shadow_001;
 		filter.value = 'blur(5px)';
 	} else {
 		shadow.value = 'none';
@@ -51,7 +59,6 @@ onBeforeUnmount(() => {
 ._topnav-container {
 	width: calc(100% - 24px);
 	height: 54px;
-	margin: 14px 0 0 0;
 	position: fixed;
 	top: 14px;
 	left: 12px;
@@ -65,15 +72,21 @@ onBeforeUnmount(() => {
 	padding: 0 20px;
 
 	@include breakpoint(md, min) {
-		width: calc(100% - 200px);
-		left: 100px;
-		right: 100px;
+		width: calc(100% - 100px);
+		left: 50px;
+		right: 50px;
 	}
 
 	@include breakpoint(lg, min) {
-		width: calc(100% - 300px);
-		left: 150px;
-		right: 150px;
+		width: calc(100% - 160px);
+		left: 80px;
+		right: 80px;
+	}
+
+	@include breakpoint(xl, min) {
+		width: calc(100% - 260px);
+		left: 130px;
+		right: 130px;
 	}
 }
 </style>
