@@ -1,12 +1,12 @@
 <template>
-	<layout-section-container id="skills" :background-color="backgroundColor">
-		<div class="_home-skills-container">
+	<layout-section-container id="experiences" :background-color="backgroundColor">
+		<div class="_home-experiences-container">
 			<layout-section-header
-				:title="$t('skills_abilities')"
-				icon-name="code-circle-2-filled"
+				:title="$t('working_experiences')"
+				icon-name="apps-filled"
 			/>
 
-			<div class="_home-skills-body"></div>
+			<div class="_home-experiences-body"></div>
 		</div>
 	</layout-section-container>
 </template>
@@ -33,14 +33,14 @@ watch(
 </script>
 
 <style scoped lang="scss">
-._home-skills-container {
+._home-experiences-container {
 	width: 100%;
 	height: 800px;
 	display: flex;
 	flex-direction: column;
 }
 
-._home-skills-body {
+._home-experiences-body {
 	width: 100%;
 	height: auto;
 	display: flex;

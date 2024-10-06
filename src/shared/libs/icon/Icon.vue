@@ -44,6 +44,26 @@
 		:size="size"
 		:stroke-width="stroke"
 	/>
+	<icon-apps-filled
+		v-else-if="name === 'apps-filled'"
+		:size="size"
+		:stroke-width="stroke"
+	/>
+	<icon-stack-2-filled
+		v-else-if="name === 'stack-2-filled'"
+		:size="size"
+		:stroke-width="stroke"
+	/>
+	<icon-article-filled
+		v-else-if="name === 'article-filled'"
+		:size="size"
+		:stroke-width="stroke"
+	/>
+	<icon-mail-filled
+		v-else-if="name === 'mail-filled'"
+		:size="size"
+		:stroke-width="stroke"
+	/>
 </template>
 
 <script setup lang="ts">
@@ -59,6 +79,10 @@ import {
 	IconBrandGithub,
 	IconMail,
 	IconCodeCircle2Filled,
+	IconAppsFilled,
+	IconStack2Filled,
+	IconArticleFilled,
+	IconMailFilled,
 } from '@tabler/icons-vue';
 
 import { T_IconName } from '@/shared/types';

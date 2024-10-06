@@ -25,7 +25,11 @@ export type T_IconName =
 	| 'brand-linkedin'
 	| 'brand-github'
 	| 'mail'
-	| 'code-circle-2-filled';
+	| 'code-circle-2-filled'
+	| 'apps-filled'
+	| 'stack-2-filled'
+	| 'article-filled'
+	| 'mail-filled';
 
 export type T_TooltipPlacement =
 	| 'topLeft'

@@ -1,7 +1,7 @@
 export const id = {
 	about: 'Tentang',
 	skills: 'Keterampilan',
-	expreiences: 'Pengalaman',
+	experiences: 'Pengalaman',
 	projects: 'Proyek',
 	blogs: 'Blog',
 	contact: 'Kontak',
@@ -20,5 +20,6 @@ export const id = {
 		'Saya adalah seorang Full-Stack Engineer yang berdedikasi dengan lebih dari dua tahun pengalaman dalam membangun aplikasi yang skalabel dan berkinerja tinggi, yang meningkatkan pengalaman pengguna serta efisiensi sistem. Keahlian saya mencakup pengembangan front-end dan back-end, dengan pengalaman bekerja di platform e-commerce dan logistik untuk mengoptimalkan performa, menyederhanakan antarmuka, serta meningkatkan arsitektur menggunakan teknologi seperti React, Vue, Laravel, dan Go. Dengan pola pikir pemecahan masalah yang kuat dan semangat terhadap inovasi, saya berkembang di lingkungan yang dinamis, selalu memberikan solusi yang memenuhi tujuan teknis dan bisnis, serta berkolaborasi secara efektif dengan tim untuk mencapai kesuksesan.',
 	copy: 'Salin',
 	copied: 'Disalin!',
-	skills_abilities: "Keterampilan & Kemampuan"
+	skills_abilities: 'Keterampilan & Kemampuan',
+	working_experiences: 'Pengalaman Kerja',
 };
