@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+    bhakti-portfolio-app-dev:
+        build:
+            context: ..
+            dockerfile: ./docker/dockerfile
+        container_name: bhakti-portfolio-app-dev
+        image: bhakti-portfolio-app-dev
+        ports:
+            - 3025:80
+        env_file:
+            - ../.env.dev
