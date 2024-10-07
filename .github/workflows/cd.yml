@@ -39,8 +39,8 @@ jobs:
                       cd ~/app/bhakti-portfolio/bhakti-portfolio-app-dev
 
                       # Update the .env file
-                      rm -f .env
-                      echo "VITE_BHAKTI_PORTFOLIO_API_URL=${{ secrets.DEV_VITE_BHAKTI_PORTFOLIO_API_URL }}" >> .env
+                      rm -f .env.dev
+                      echo "VITE_BHAKTI_PORTFOLIO_API_URL=${{ secrets.DEV_VITE_BHAKTI_PORTFOLIO_API_URL }}" >> .env.dev
 
                       # Restart the Docker container with the new image
                       docker-compose -f docker/docker-compose.dev.yml up -d --force-recreate
@@ -67,8 +67,8 @@ jobs:
                       cd ~/app/bhakti-portfolio/bhakti-portfolio-app
 
                       # Update the .env file
-                      rm -f .env
-                      echo "VITE_BHAKTI_PORTFOLIO_API_URL=${{ secrets.PROD_VITE_BHAKTI_PORTFOLIO_API_URL }}" >> .env
+                      rm -f .env.prod
+                      echo "VITE_BHAKTI_PORTFOLIO_API_URL=${{ secrets.PROD_VITE_BHAKTI_PORTFOLIO_API_URL }}" >> .env.prod
 
                       # Restart the Docker container with the new image
                       docker-compose -f docker/docker-compose.prod.yml up -d --force-recreate
