@@ -38,11 +38,13 @@ jobs:
                   password: ${{ secrets.DOCKER_PASSWORD }}
 
             - name: Build and push Development Docker image
+              if: github.ref == 'refs/heads/dev'
               run: |
                   docker build -t ${{ secrets.DOCKER_USERNAME }}/bhakti-portfolio-app-dev:latest -f docker/dockerfile .
                   docker push ${{ secrets.DOCKER_USERNAME }}/bhakti-portfolio-app-dev:latest
 
             - name: Build and push Production Docker image
+              if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging'
               run: |
                   docker build -t ${{ secrets.DOCKER_USERNAME }}/bhakti-portfolio-app:latest -f docker/dockerfile .
                   docker push ${{ secrets.DOCKER_USERNAME }}/bhakti-portfolio-app:latest
