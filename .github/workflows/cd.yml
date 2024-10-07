@@ -35,7 +35,8 @@ jobs:
                       git pull origin dev
                       rm -f .env
                       echo "VITE_BHAKTI_PORTFOLIO_API_URL=${{ secrets.DEV_VITE_BHAKTI_PORTFOLIO_API_URL }}" >> .env
-                      docker-compose -f docker/docker-compose.dev.yml --no-cache && docker-compose -f docker/docker-compose.dev.yml up -d --force-recreate
+                      docker-compose -f docker/docker-compose.dev.yml build --no-cache
+                      docker-compose -f docker/docker-compose.dev.yml up -d --force-recreate
                       docker system prune -a -f
 
             - name: Prod Deployment
@@ -53,5 +54,6 @@ jobs:
                       git pull origin main
                       rm -f .env
                       echo "VITE_BHAKTI_PORTFOLIO_API_URL=${{ secrets.PROD_VITE_BHAKTI_PORTFOLIO_API_URL }}" >> .env
-                      docker-compose -f docker/docker-compose.prod.yml build --no-cache && docker-compose -f docker/docker-compose.prod.yml up -d --force-recreate
+                      docker-compose -f docker/docker-compose.prod.yml build --no-cache
+                      docker-compose -f docker/docker-compose.prod.yml up -d --force-recreate
                       docker system prune -a -f
