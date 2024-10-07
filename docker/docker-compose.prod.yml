@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     bhakti-portfolio-app:
-        image: your-dockerhub-username/bhakti-portfolio-app:latest
+        image: bhaktibuana/bhakti-portfolio-app:latest
         container_name: bhakti-portfolio-app
         ports:
             - '3035:80'
