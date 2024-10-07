@@ -17,43 +17,61 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout
+            - name: Checkout code
               uses: actions/checkout@v2
 
-            - name: Dev Deployment
-              if: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/dev') || (github.event_name == 'pull_request' && github.base_ref == 'dev') }}
+            - name: Deploy to Development Server
+              if: |
+                  (github.event_name == 'push' && github.ref == 'refs/heads/dev') ||
+                  (github.event_name == 'pull_request' && github.base_ref == 'dev')
               uses: appleboy/ssh-action@master
               with:
                   host: ${{ secrets.SSH_HOST }}
                   username: ${{ secrets.SSH_USERNAME }}
-                  password: ${{ secrets.SSH_PASSWORD }}
                   key: ${{ secrets.SSH_PRIVATE_KEY }}
                   passphrase: ${{ secrets.SSH_PASSPHRASE }}
                   port: 22
                   script: |
+                      # Pull the latest Development Docker image
+                      docker pull ${{ secrets.DOCKER_USERNAME }}/bhakti-portfolio-app-dev:latest
+
+                      # Navigate to the application directory
                       cd ~/app/bhakti-portfolio/bhakti-portfolio-app-dev
-                      git pull origin dev
+
+                      # Update the .env file
                       rm -f .env
                       echo "VITE_BHAKTI_PORTFOLIO_API_URL=${{ secrets.DEV_VITE_BHAKTI_PORTFOLIO_API_URL }}" >> .env
-                      docker-compose -f docker/docker-compose.dev.yml build --no-cache
+
+                      # Restart the Docker container with the new image
                       docker-compose -f docker/docker-compose.dev.yml up -d --force-recreate
+
+                      # Clean up unused Docker resources
                       docker system prune -a -f
 
-            - name: Prod Deployment
-              if: ${{ (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')) || (github.event_name == 'pull_request' && (github.base_ref == 'main' || github.base_ref == 'staging')) }}
+            - name: Deploy to Production Server
+              if: |
+                  (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')) ||
+                  (github.event_name == 'pull_request' && (github.base_ref == 'main' || github.base_ref == 'staging'))
               uses: appleboy/ssh-action@master
               with:
                   host: ${{ secrets.SSH_HOST }}
                   username: ${{ secrets.SSH_USERNAME }}
-                  password: ${{ secrets.SSH_PASSWORD }}
                   key: ${{ secrets.SSH_PRIVATE_KEY }}
                   passphrase: ${{ secrets.SSH_PASSPHRASE }}
                   port: 22
                   script: |
+                      # Pull the latest Production Docker image
+                      docker pull ${{ secrets.DOCKER_USERNAME }}/bhakti-portfolio-app:latest
+
+                      # Navigate to the application directory
                       cd ~/app/bhakti-portfolio/bhakti-portfolio-app
-                      git pull origin main
+
+                      # Update the .env file
                       rm -f .env
                       echo "VITE_BHAKTI_PORTFOLIO_API_URL=${{ secrets.PROD_VITE_BHAKTI_PORTFOLIO_API_URL }}" >> .env
-                      docker-compose -f docker/docker-compose.prod.yml build --no-cache
+
+                      # Restart the Docker container with the new image
                       docker-compose -f docker/docker-compose.prod.yml up -d --force-recreate
+
+                      # Clean up unused Docker resources
                       docker system prune -a -f
