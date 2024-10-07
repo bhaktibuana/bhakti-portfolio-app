@@ -15,6 +15,12 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v2
 
+            - name: Debug GitHub Ref
+              run: echo ${{ github.ref }}
+
+            - name: Debug GitHub Base Ref
+              run: echo ${{ github.base_ref }}
+
             - name: Deploy to Development Server
               if: github.ref == 'refs/heads/dev'
               uses: appleboy/ssh-action@master
