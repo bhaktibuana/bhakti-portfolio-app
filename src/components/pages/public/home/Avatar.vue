@@ -1,22 +1,22 @@
 <template>
 	<div class="_avatar-wrapper">
 		<div class="_avatar-card">
-			<!-- <img
+			<img
 				src="https://cloud.bhaktibuana.com/bhaktibuana/f26b13c52e7358efbbbdb5f18d1f040f-pixelverse-nft.jpg"
 				alt="avatar-image"
 				class="_avatar-image"
-			/> -->
-			<img
+			/>
+			<!-- <img
 				:src="PixelverseNFT"
 				alt="avatar-image"
 				class="_avatar-image"
-			/>
+			/> -->
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import PixelverseNFT from '@/assets/pixelverse-nft.jpg';
+// import PixelverseNFT from '@/assets/pixelverse-nft.jpg';
 </script>
 
 <style scoped lang="scss">
