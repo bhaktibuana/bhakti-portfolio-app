@@ -5,6 +5,11 @@ on:
         workflows: ['ci']
         types:
             - completed
+    push:
+        branches:
+            - main
+            - staging
+            - dev
 
 jobs:
     cd:
