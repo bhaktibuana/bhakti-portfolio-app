@@ -1,11 +1,11 @@
 {
-	"name": "trailblazers-tracker",
+	"name": "bhakti-portfolio",
 	"private": true,
 	"version": "0.1.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vue-tsc -b && vite build",
+		"build": "vue-tsc && vite build",
 		"preview": "vite preview"
 	},
 	"dependencies": {
@@ -28,6 +28,6 @@
 		"sass-loader": "^16.0.1",
 		"typescript": "^5.2.2",
 		"vite": "^5.0.0",
-		"vue-tsc": "^1.8.22"
+		"vue-tsc": "^2.1.6"
 	}
 }

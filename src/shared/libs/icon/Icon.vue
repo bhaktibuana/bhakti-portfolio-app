@@ -1,65 +1,65 @@
 <template>
-	<icon-loader-2
+	<IconLoader2
 		v-if="name === 'loader-2'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-settings-2
+	<IconSettings2
 		v-else-if="name === 'settings-2'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-circle-chevron-right
+	<IconCircleChevronRight
 		v-else-if="name === 'circle-chevron-right'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-chevron-down
+	<IconChevronDown
 		v-else-if="name === 'chevron-down'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-ghost-filled
+	<IconGhostFilled
 		v-else-if="name === 'ghost-filled'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-brand-linkedin
+	<IconBrandLinkedin
 		v-else-if="name === 'brand-linkedin'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-brand-github
+	<IconBrandGithub
 		v-else-if="name === 'brand-github'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-mail
+	<IconMail
 		v-else-if="name === 'mail'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-code-circle-2-filled
+	<IconCodeCircle2Filled
 		v-else-if="name === 'code-circle-2-filled'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-apps-filled
+	<IconAppsFilled
 		v-else-if="name === 'apps-filled'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-stack-2-filled
+	<IconStack2Filled
 		v-else-if="name === 'stack-2-filled'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-article-filled
+	<IconArticleFilled
 		v-else-if="name === 'article-filled'"
 		:size="size"
 		:stroke-width="stroke"
 	/>
-	<icon-mail-filled
+	<IconMailFilled
 		v-else-if="name === 'mail-filled'"
 		:size="size"
 		:stroke-width="stroke"
