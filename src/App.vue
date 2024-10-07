@@ -8,6 +8,7 @@
 </template>
 
 <script setup lang="ts">
+// test ci/cd
 import { onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 
