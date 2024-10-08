@@ -55,5 +55,6 @@ const handleSelect = (value: string) => {
 	gap: 4px;
 	align-items: center;
 	color: var(--color-text-001);
+	cursor: pointer;
 }
 </style>
